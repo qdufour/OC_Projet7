@@ -27,8 +27,14 @@ jobs:
           python -m venv venv
           source venv/bin/activate
 
+      - name: Unzip data
+        run: unzip data1.zip -d data1
+
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          source venv/bin/activate
+          pip install setuptools
+          pip install -r requirements.txt
 
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       - name: Zip artifact for deployment
